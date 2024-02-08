@@ -1,0 +1,21 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+
+<?php
+$storeListBlock = $block->getChildBlock('store.list');
+$storeMapBlock = $block->getChildBlock('store.map');
+?>
+
+<div class="store-locator-main">
+    <?php if ($storeListBlock) : ?>
+        <?= $storeListBlock->toHtml() ?>
+    <?php endif; ?>
+
+    <?php if ($storeMapBlock) : ?>
+        <?= $storeMapBlock->toHtml() ?>
+    <?php endif; ?>
+</div>
+

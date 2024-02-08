@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- Defines ACL (Access Control List) rules for the Store Locator module -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Gustav_Thesis::storelocator" title="Store Locator" sortOrder="51">
+                    <resource id="Gustav_Thesis::config_storelocator" title="Configuration" sortOrder="10"/>
+                    <resource id="Gustav_Thesis::manage_stores" title="Manage Stores" sortOrder="10"/>
+                    <resource id="Gustav_Thesis::manage_categories" title="Manage Categories" sortOrder="20"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="store_locator" resource="default" engine="innodb" comment="Store Locator Table">
+        <column xsi:type="int" name="store_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Store ID" />
+        <column xsi:type="varchar" name="store_name" length="255" nullable="false" comment="Store Name" />
+        <column xsi:type="varchar" name="address" length="255" nullable="false" comment="Address" />
+        <column xsi:type="varchar" name="city" length="100" nullable="false" comment="City" />
+        <column xsi:type="varchar" name="postcode" length="20" nullable="false" comment="Postcode" />
+        <column xsi:type="varchar" name="country" length="100" nullable="false" comment="Country" />
+        <column xsi:type="varchar" name="phone" length="50" nullable="true" comment="Phone Number" />
+        <column xsi:type="varchar" name="hours" length="255" nullable="true" comment="Opening Hours" />
+        <column xsi:type="decimal" name="latitude" scale="6" precision="9" nullable="false" comment="Latitude" />
+        <column xsi:type="decimal" name="longitude" scale="6" precision="9" nullable="false" comment="Longitude" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="store_id" />
+        </constraint>
+        <constraint xsi:type="unique" referenceId="STORE_LOCATOR_NAME_UNIQUE">
+            <column name="store_name" />
+        </constraint>
+    </table>
+
+    <table name="store_categories" resource="default" engine="innodb" comment="Store Categories Table">
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Category ID" />
+        <column xsi:type="varchar" name="category_name" length="255" nullable="false" comment="Category Name" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id" />
+        </constraint>
+        <constraint xsi:type="unique" referenceId="CATEGORY_NAME_UNIQUE">
+            <column name="category_name" />
+        </constraint>
+    </table>
+
+    <table name="store_category_relation" resource="default" engine="innodb" comment="Store to Category Relation Table">
+        <column xsi:type="int" name="store_id" padding="10" unsigned="true" nullable="false" comment="Store ID"/>
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" comment="Category ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="store_id"/>
+            <column name="category_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="STORE_CATEGORY_RELATION_STORE_ID_STORE_LOCATOR_STORE_ID" table="store_category_relation" column="store_id" referenceTable="store_locator" referenceColumn="store_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="STORE_CATEGORY_RELATION_CATEGORY_ID_STORE_CATEGORY_CATEGORY_ID" table="store_category_relation" column="category_id" referenceTable="store_categories" referenceColumn="category_id" onDelete="CASCADE"/>
+    </table>
+
+</schema>

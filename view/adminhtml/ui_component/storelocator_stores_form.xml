@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">storelocator_stores_form.storelocator_stores_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Store Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Gustav\Thesis\Block\Adminhtml\Stores\SaveButton"/>
+            <button name="delete" class="Gustav\Thesis\Block\Adminhtml\Stores\DeleteButton"/>
+            <button name="back" class="Gustav\Thesis\Block\Adminhtml\Stores\BackButton"/>
+        </buttons>
+        <namespace>storelocator_stores_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>storelocator_stores_form.storelocator_stores_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="storelocator_stores_form_data_source" component="Magento_Ui/js/form/provider">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Gustav\Thesis\Model\Stores\DataProvider</argument>
+            <argument name="name" xsi:type="string">storelocator_stores_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">store_id</argument>
+            <argument name="requestFieldName" xsi:type="string">store_id</argument>
+        </argument>
+        <settings>
+            <submitUrl path="storelocator/stores/save"/>
+        </settings>
+    </dataSource>
+    <fieldset name="store">
+        <settings>
+            <label translate="true">Store Information</label>
+        </settings>
+
+        <field name="store_name" sortOrder="10" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Store Name</label>
+                <dataScope>store_name</dataScope>
+            </settings>
+        </field>
+        <field name="address" sortOrder="20" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Address</label>
+                <dataScope>address</dataScope>
+            </settings>
+        </field>
+
+        <field name="city" sortOrder="30" formElement="input">
+        <settings>
+        <validation>
+            <rule name="required-entry" xsi:type="boolean">true</rule>
+        </validation>
+            <dataType>text</dataType>
+            <label translate="true">City</label>
+            <dataScope>city</dataScope>
+        </settings>
+        </field>
+
+        <field name="postcode" sortOrder="40" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Postcode</label>
+                <dataScope>postcode</dataScope>
+            </settings>
+        </field>
+
+        <field name="country" sortOrder="50" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Country</label>
+                <dataScope>country</dataScope>
+            </settings>
+        </field>
+
+        <field name="phone" sortOrder="60" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Phone Number</label>
+                <dataScope>phone</dataScope>
+            </settings>
+        </field>
+        <field name="hours" sortOrder="70" formElement="input">
+        <settings>
+        <dataType>text</dataType>
+            <label translate="true">Opening Hours</label>
+            <dataScope>hours</dataScope>
+        </settings>
+        </field>
+
+        <field name="latitude" sortOrder="80" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Latitude</label>
+                <dataScope>latitude</dataScope>
+            </settings>
+        </field>
+
+        <field name="longitude" sortOrder="90" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Longitude</label>
+                <dataScope>longitude</dataScope>
+            </settings>
+        </field>
+
+        <field name="category_ids" formElement="multiselect">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Categories</label>
+                <dataScope>category_ids</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Gustav\Thesis\Model\Categories\OptionsProvider"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+
+    </fieldset>
+</form>
+

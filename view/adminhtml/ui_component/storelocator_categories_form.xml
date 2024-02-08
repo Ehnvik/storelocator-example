@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">storelocator_categories_form.storelocator_categories_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Category Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Gustav\Thesis\Block\Adminhtml\Categories\SaveButton"/>
+            <button name="delete" class="Gustav\Thesis\Block\Adminhtml\Categories\DeleteButton"/>
+            <button name="back" class="Gustav\Thesis\Block\Adminhtml\Categories\BackButton"/>
+        </buttons>
+        <namespace>storelocator_categories_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>storelocator_categories_form.storelocator_categories_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="storelocator_categories_form_data_source" component="Magento_Ui/js/form/provider">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Gustav\Thesis\Model\Categories\DataProvider</argument>
+            <argument name="name" xsi:type="string">storelocator_categories_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">category_id</argument>
+            <argument name="requestFieldName" xsi:type="string">category_id</argument>
+        </argument>
+        <settings>
+            <submitUrl path="storelocator/categories/save"/>
+        </settings>
+    </dataSource>
+    <fieldset name="category">
+        <settings>
+            <label translate="true">Category Information</label>
+        </settings>
+
+        <field name="category_name" sortOrder="10" formElement="input">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Category Name</label>
+                <dataScope>category_name</dataScope>
+            </settings>
+        </field>
+
+    </fieldset>
+</form>
+

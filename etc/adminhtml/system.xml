@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- Configuration for Store Locator module settings in Magentos admin system configuration -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="gustav_tab" translate="label" sortOrder="1000">
+            <label>Store Locator</label>
+        </tab>
+
+        <section id="gustav_thesis" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Store Locator Settings</label>
+            <tab>gustav_tab</tab>
+            <resource>Gustav_Thesis::config_storelocator</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Store Locator</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="google_maps_api_key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Maps API Key</label>
+                    <comment><![CDATA[Enter your Google Maps API Key here.]]></comment>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>

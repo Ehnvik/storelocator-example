@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- Menu configuration for the Store Locator module -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/menu.xsd">
+    <menu>
+        <add id="Gustav_Thesis::main_menu" title="Store Locator" module="Gustav_Thesis" sortOrder="20" resource="Gustav_Thesis::storelocator"/>
+        <add id="Gustav_Thesis::manage_stores" title="Manage Stores" module="Gustav_Thesis" parent="Gustav_Thesis::main_menu" sortOrder="30" action="storelocator/stores/index" resource="Gustav_Thesis::manage_stores"/>
+        <add id="Gustav_Thesis::manage_categories" title="Manage Categories" module="Gustav_Thesis" parent="Gustav_Thesis::main_menu" sortOrder="40" action="storelocator/categories/index" resource="Gustav_Thesis::manage_categories"/>
+    </menu>
+</config>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!-- Defines Content Security Policy (CSP) whitelist for the module to ensure content is loaded securely -->
+<csp_whitelist>
+    <policies>
+        <policy id="font-src">
+            <values>
+                <value id="fonts-googleapis" type="host">fonts.googleapis.com</value>
+                <value id="fonts-gstatic" type="host">fonts.gstatic.com</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="styles-googleapis" type="host">fonts.googleapis.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="maps-gstatic" type="host">maps.gstatic.com</value>
+                <value id="maps-gstatic-img" type="host">maps.gstatic.com</value>
+                <value id="googleapis-img" type="host">*.googleapis.com</value>
+            </values>
+        </policy>
+        <policy id="script-src">
+            <values>
+                <value id="google-maps-api" type="host">maps.googleapis.com</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="google-maps-style" type="host">maps.gstatic.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="google-maps-img" type="host">maps.gstatic.com</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="google-maps-connect" type="host">maps.googleapis.com</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>
