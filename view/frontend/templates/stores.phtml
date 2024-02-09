@@ -5,37 +5,22 @@
 
 $categories = $block->getCategories();
 ?>
-<div class="store-locator-wrapper">
-<div class="store-locator">
-    <div class="filter-reset-container">
-    <div class="reset-button-container">
-        <button class="reset-button action-primary">Reset</button>
-    </div>
-<div class="category-filter-container">
-    <select class="category-filter">
-        <option value="">All Categories</option>
-        <?php foreach ($categories as $category): ?>
-            <option value="<?= $escaper->escapeHtmlAttr($category->getId()) ?>">
-                <?= $escaper->escapeHtml($category->getCategoryName()) ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
-</div>
-    </div>
-    <div class="store-search-container">
-        <input type="text" class="store-search-input" placeholder="Search store...">
-    </div>
-    <div class="js-store-list"></div>
-</div>
+
+<div id="store-list" class="store-list-container" data-bind="scope: 'stores'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
 </div>
 
 <script type="text/x-magento-init">
     {
-        ".js-store-list": {
-            "storeListWidget": {
-                "actionUrl": "<?= $escaper->escapeUrl($block->getUrl('storelocator/frontend/storelist')) ?>",
-            "pageSize": 5
+        "#store-list": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "stores": {
+                        "component": "storeList",
+                        "actionUrl": "<?= $escaper->escapeUrl($block->getUrl('storelocator/frontend/storelist')) ?>"
+                    }
+                }
+            }
         }
     }
-}
 </script>
