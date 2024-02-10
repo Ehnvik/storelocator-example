@@ -1,4 +1,7 @@
-<div class="stores-list" data-bind="foreach: stores">
+<div>
+    <h4 data-bind="visible: errorMessage, text: errorMessage"></h4>
+
+    <div class="stores-list" data-bind="foreach: stores">
     <div class="store-container">
         <div class="store-name-container">
             <h3 class="store-name" data-bind="text: name"></h3>
@@ -17,8 +20,13 @@
                 <p class="store-phone" data-bind="text: phone"></p>
             </div>
         </div>
-<!--        <div class="show-on-map-container">-->
-<!--            <a href="#" class="show-on-map" data-store-id="${store.id}">Show on Map</a>-->
-<!--        </div>-->
+    </div>
+</div>
+    <div class="pagination" data-bind="visible: pageCount() > 1">
+        <button data-bind="click: function() { changePage(currentPage() - 1) }, visible: currentPage() > 1">&laquo; Back</button>
+        <!-- ko foreach: {data: ko.utils.range(1, pageCount()), as: 'pageNumber'} -->
+        <button data-bind="text: pageNumber, click: function() { $parent.changePage(pageNumber) }, css: { 'current-page': $parent.currentPage() === pageNumber } "></button>
+        <!-- /ko -->
+        <button data-bind="click: function() { changePage(currentPage() + 1) }, visible: currentPage() < pageCount()">Next &raquo;</button>
     </div>
 </div>
