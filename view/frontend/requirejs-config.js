@@ -3,7 +3,7 @@ const config = {
   map: {
     "*": {
       storeList: "Gustav_Thesis/js/view/store-list",
-      storeMap: "Gustav_Thesis/js/view/map/store-map",
+      storeMap: "Gustav_Thesis/js/view/store-map",
     },
   },
 };

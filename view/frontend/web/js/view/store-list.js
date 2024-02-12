@@ -1,10 +1,11 @@
-define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
-  uiComponent,
-  $,
-  ko,
-  uiLayout,
-  urlBuilder
-) {
+define([
+  "uiComponent",
+  "jquery",
+  "ko",
+  "uiLayout",
+  "mage/url",
+  "Gustav_Thesis/js/view/shared-data",
+], function (uiComponent, $, ko, uiLayout, urlBuilder, sharedData) {
   return uiComponent.extend({
     defaults: {
       template: "Gustav_Thesis/store-list.html",
@@ -22,12 +23,15 @@ define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
       }),
       listens: {
         categoryId: "loadStores",
-        searchQuery: "checkInputLength",
+        searchQuery: "checkSearchInputLength",
       },
     },
 
     initialize() {
       this._super();
+
+      this.stores = sharedData.stores;
+
       this.pageCount = ko.computed(() => {
         return Math.ceil(this.totalCount() / this.pageSize);
       }, this);
@@ -75,9 +79,11 @@ define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
     resetStorePage() {
       this.categoryId("");
       this.searchQuery("");
+      this.currentPage(1);
+      this.loadStores();
     },
 
-    checkInputLength() {
+    checkSearchInputLength() {
       if (this.searchQuery().length >= 3 || this.searchQuery() === "") {
         this.loadStores();
       }

@@ -12,4 +12,19 @@ $apiKey = $block->getGoogleMapApiKey();
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?= $escaper->escapeUrl($apiKey) ?>&callback=initMap" async defer></script>
 
+<div class="map" id="map" data-bind="scope: 'map'" style="width: 500px; height: 500px"></div>
 
+
+<script type="text/x-magento-init">
+    {
+        "#map": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "map": {
+                        "component": "storeMap"
+                    }
+                }
+            }
+        }
+    }
+</script>
