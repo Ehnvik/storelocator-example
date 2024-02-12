@@ -3,7 +3,7 @@
 /** @var \Magento\Framework\Escaper $escaper */
 /** @var \Gustav\Thesis\Block\Frontend\Stores $block */
 
-$categories = $block->getCategories();
+$categories = $block->getJsonCategories();
 ?>
 
 <div id="store-list" class="store-list-container" data-bind="scope: 'stores'">
@@ -17,7 +17,8 @@ $categories = $block->getCategories();
                 "components": {
                     "stores": {
                         "component": "storeList",
-                        "actionUrl": "<?= $escaper->escapeUrl($block->getUrl('storelocator/frontend/storelist')) ?>"
+                        "actionUrl": "<?= $escaper->escapeUrl($block->getUrl('storelocator/frontend/storelist')) ?>",
+                        "categoriesData": "<?= $escaper->escapeJs($categories) ?>"
                     }
                 }
             }

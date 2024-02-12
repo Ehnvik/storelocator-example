@@ -14,6 +14,9 @@ define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
       currentPage: ko.observable(1),
       pageSize: 5,
       errorMessage: ko.observable(""),
+      categoriesData: "",
+      categories: ko.observableArray([]),
+      categoryId: ko.observable(""),
     },
 
     initialize() {
@@ -22,6 +25,7 @@ define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
         return Math.ceil(this.totalCount() / this.pageSize);
       }, this);
       this.loadStores();
+      this.categories(JSON.parse(this.categoriesData));
     },
 
     loadStores() {
@@ -33,6 +37,7 @@ define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
         dataType: "json",
         data: {
           page: this.currentPage(),
+          category: self.categoryId(),
         },
 
         success: function (response) {

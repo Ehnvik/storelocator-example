@@ -50,4 +50,18 @@ class Stores extends Template
         return $collection->getItems();
     }
 
+    public function getJsonCategories(): string {
+        $result = [];
+        $collection = $this->categoryCollectionFactory->create();
+
+        foreach ($collection->getItems() as $category) {
+            $result[$category->getCategoryId()] = [
+                'id' => $category->getCategoryId(),
+                'name' => $category->getCategoryName()
+            ];
+        }
+
+        return json_encode($result);
+    }
+
 }
