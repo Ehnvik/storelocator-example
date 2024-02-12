@@ -17,8 +17,12 @@ define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
       categoriesData: "",
       categories: ko.observableArray([]),
       categoryId: ko.observable(""),
+      searchQuery: ko.observable("").extend({
+        rateLimit: { timeout: 500, method: "notifyWhenChangesStop" },
+      }),
       listens: {
         categoryId: "loadStores",
+        searchQuery: "checkInputLength",
       },
     },
 
@@ -48,6 +52,7 @@ define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
         data: {
           page: this.currentPage(),
           category: self.categoryId(),
+          search: self.searchQuery(),
         },
 
         success: function (response) {
@@ -69,6 +74,13 @@ define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
 
     resetStorePage() {
       this.categoryId("");
+      this.searchQuery("");
+    },
+
+    checkInputLength() {
+      if (this.searchQuery().length >= 3 || this.searchQuery() === "") {
+        this.loadStores();
+      }
     },
   });
 });
