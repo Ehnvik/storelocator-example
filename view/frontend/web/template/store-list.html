@@ -1,5 +1,9 @@
 <div>
     <h4 data-bind="visible: errorMessage, text: errorMessage"></h4>
+    <div class="filter-reset-container">
+        <div class="reset-button-container">
+            <button class="reset-button action-primary" data-bind="click: resetStorePage">Reset</button>
+        </div>
     <div class="category-filter-container">
         <select class="category-filter" data-bind="value: categoryId">
             <option value="">All Categories</option>
@@ -7,6 +11,7 @@
             <option data-bind="text: name, value: id"></option>
             <!-- /ko -->
         </select>
+    </div>
     </div>
     <div class="stores-list" data-bind="foreach: stores">
     <div class="store-container">

@@ -53,7 +53,6 @@ define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
         success: function (response) {
           self.stores(response.stores);
           self.totalCount(response.total_count);
-          console.log(self.categoryId());
         },
         error: function (error) {
           self.errorMessage("Could not load stores: " + error.status);
@@ -66,6 +65,10 @@ define(["uiComponent", "jquery", "ko", "uiLayout", "mage/url"], function (
         this.currentPage(newPage);
         this.loadStores();
       }
+    },
+
+    resetStorePage() {
+      this.categoryId("");
     },
   });
 });
