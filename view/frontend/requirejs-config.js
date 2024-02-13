@@ -1,8 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 const config = {
-    map: {
-        '*': {
-            googleMapConfig: 'Gustav_Thesis/js/google-map-config',
-            storeListWidget: 'Gustav_Thesis/js/store-list',
-        },
+  map: {
+    "*": {
+      storeList: "Gustav_Thesis/js/view/store-list",
+      storeMap: "Gustav_Thesis/js/view/store-map",
     },
+  },
 };
